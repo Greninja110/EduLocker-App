@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background" android:orientation="vertical">
+
+    <!-- Header — dark maroon card, same style as settings -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_dark"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/white"
+            android:padding="4dp"
+            android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Virtual ID Card"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="24dp" android:gravity="center_horizontal">
+
+            <!--
+                Both cards sit inside a FrameLayout so they share the same 480dp fixed height.
+                Only one is VISIBLE at a time; the other is INVISIBLE (still laid out for PDF).
+            -->
+            <FrameLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <!-- Front Card -->
+                <LinearLayout android:id="@+id/card_front"
+                    android:layout_width="match_parent" android:layout_height="480dp"
+                    android:background="@drawable/bg_card_dark" android:orientation="vertical"
+                    android:padding="20dp" android:gravity="top"
+                    android:visibility="visible">
+
+                    <!-- School name + logo row -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/tv_card_school_name"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="Organisation"
+                            android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                        <ImageView android:layout_width="36dp" android:layout_height="36dp"
+                            android:src="@mipmap/ic_launcher" />
+                    </LinearLayout>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="64dp" android:layout_height="64dp"
+                        android:src="@mipmap/ic_launcher" android:layout_marginBottom="12dp" />
+
+                    <TextView android:id="@+id/tv_card_student_name"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Student Name" android:textColor="@color/white"
+                        android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="10dp" />
+
+                    <!-- Tabular key-value rows -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:paddingVertical="2dp">
+                        <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                            android:text="S/D of" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                        <TextView android:id="@+id/tv_card_father"
+                            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:paddingVertical="2dp">
+                        <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                            android:text="&amp; Mother" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                        <TextView android:id="@+id/tv_card_mother"
+                            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:paddingVertical="2dp">
+                        <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                            android:text="D.O.B" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                        <TextView android:id="@+id/tv_card_dob"
+                            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:paddingVertical="2dp">
+                        <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                            android:text="Blood" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                        <TextView android:id="@+id/tv_card_blood"
+                            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:paddingVertical="2dp">
+                        <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                            android:text="Address" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                        <TextView android:id="@+id/tv_card_address"
+                            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:paddingVertical="2dp"
+                        android:layout_marginBottom="12dp">
+                        <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                            android:text="Contact" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                        <TextView android:id="@+id/tv_card_contact"
+                            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="#33FFFFFF" android:layout_marginBottom="8dp" />
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:id="@+id/tv_card_passport_id"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:textColor="@color/primary_light" android:textSize="11sp"
+                                android:textStyle="bold" />
+                            <TextView android:id="@+id/tv_card_state"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:textColor="#AAFFFFFF" android:textSize="11sp" />
+                            <TextView android:id="@+id/tv_card_verified"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Verified Student" android:textColor="#AAFFFFFF"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                        <ImageView android:id="@+id/iv_card_qr"
+                            android:layout_width="64dp" android:layout_height="64dp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/tv_card_user_id"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="User ID:" android:textColor="#66FFFFFF" android:textSize="10sp"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <!-- Back Card — same 480dp height, initially invisible so it stays laid out -->
+                <LinearLayout android:id="@+id/card_back"
+                    android:layout_width="match_parent" android:layout_height="480dp"
+                    android:background="@drawable/bg_card_dark" android:orientation="vertical"
+                    android:padding="20dp" android:gravity="top"
+                    android:visibility="invisible">
+
+                    <ImageView android:layout_width="48dp" android:layout_height="48dp"
+                        android:src="@mipmap/ic_launcher" android:layout_gravity="center"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView android:id="@+id/tv_back_school_name"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Organisation" android:textColor="@color/white"
+                        android:textSize="15sp" android:textStyle="bold" android:layout_gravity="center"
+                        android:gravity="center" android:layout_marginBottom="4dp" />
+
+                    <TextView android:id="@+id/tv_back_address"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Address" android:textColor="#CCFFFFFF" android:textSize="12sp"
+                        android:layout_gravity="center" android:gravity="center"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Valid till: 31 May 2027"
+                        android:textColor="#AAFFFFFF" android:textSize="12sp"
+                        android:layout_marginBottom="12dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="This Card testified to the status of the holder of being a student of this institution. It is not Transferable and it should be produced at the time of receipt of library books, monetary helps, examinations and any such other times when required to do so by the Principal."
+                        android:textColor="#99FFFFFF" android:textSize="11sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Principal" android:textColor="#AAFFFFFF" android:textSize="12sp"
+                        android:layout_gravity="end" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="16dp" android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="8dp">
+            <Button android:id="@+id/btn_flip"
+                android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
+                android:text="Show Back" style="@style/Widget.EduLocker.Button.Outlined"
+                android:textAllCaps="false" android:layout_marginEnd="8dp" />
+            <Button android:id="@+id/btn_share"
+                android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
+                android:text="Share as PDF" android:background="@drawable/bg_gradient_primary"
+                android:textColor="@color/white" android:textAllCaps="false" />
+        </LinearLayout>
+        <Button android:id="@+id/btn_copy_id"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:text="Copy Passport ID"
+            style="@style/Widget.EduLocker.Button.Outlined"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>

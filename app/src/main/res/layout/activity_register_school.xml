@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_dark"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:src="@drawable/ic_back" android:tint="@color/white"
+            android:padding="4dp" android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Register New Organisation"
+            android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- weight=1 so ScrollView fills remaining height and keyboard resize works -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Organisation Full Name"
+                style="@style/Widget.EduLocker.TextInput"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_school_name"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="State / UT"
+                style="@style/Widget.EduLocker.TextInput.Dropdown"
+                android:layout_marginBottom="16dp">
+                <AutoCompleteTextView android:id="@+id/spinner_state"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="none" android:focusable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="District"
+                style="@style/Widget.EduLocker.TextInput"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_district"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Organisation Type"
+                style="@style/Widget.EduLocker.TextInput.Dropdown"
+                android:layout_marginBottom="16dp">
+                <AutoCompleteTextView android:id="@+id/spinner_type"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="none" android:focusable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Admin / Head Name"
+                style="@style/Widget.EduLocker.TextInput"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_principal_name"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Address"
+                style="@style/Widget.EduLocker.TextInput"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_address"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Contact Phone Number"
+                style="@style/Widget.EduLocker.TextInput"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_phone"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Admin Login Email"
+                style="@style/Widget.EduLocker.TextInput"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_login_email"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Admin Login Password"
+                style="@style/Widget.EduLocker.TextInput"
+                app:passwordToggleEnabled="true"
+                android:layout_marginBottom="24dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_login_password"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar android:id="@+id/progress_bar"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_gravity="center" android:visibility="gone"
+                android:layout_marginBottom="8dp" />
+
+            <Button android:id="@+id/btn_register_school"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="Register Organisation"
+                android:background="@drawable/bg_gradient_primary"
+                android:textColor="@color/white" android:textAllCaps="false" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

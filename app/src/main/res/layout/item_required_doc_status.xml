@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:gravity="center_vertical"
+    android:paddingVertical="8dp" android:paddingHorizontal="4dp">
+
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical">
+        <TextView android:id="@+id/tv_doc_name"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="13sp" android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+        <TextView android:id="@+id/tv_doc_status"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="12sp" android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <Button android:id="@+id/btn_upload_doc"
+        android:layout_width="wrap_content" android:layout_height="32dp"
+        android:textSize="11sp" android:textAllCaps="false"
+        style="@style/Widget.EduLocker.Button.Outlined"
+        android:visibility="gone" />
+
+</LinearLayout>

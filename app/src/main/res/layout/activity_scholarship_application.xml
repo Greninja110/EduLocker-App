@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background" android:orientation="vertical">
+
+    <!-- Header -->
+    <LinearLayout android:id="@+id/layout_header"
+        android:layout_marginHorizontal="16dp" android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_dark"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:padding="20dp">
+        <ImageView android:id="@+id/btn_back"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:src="@drawable/ic_back" android:tint="@color/white"
+            android:padding="4dp" android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+        <TextView android:id="@+id/tv_toolbar_title"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Apply for Scholarship"
+            android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+
+        <!-- Scholarship Info -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/card_scholarship">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:id="@+id/tv_scholarship_title"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="17sp" android:textStyle="bold" android:textColor="@color/primary" />
+                <TextView android:id="@+id/tv_issued_by"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="12sp" android:textColor="@color/text_secondary" android:layout_marginTop="4dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <TextView android:id="@+id/tv_amount"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:textSize="16sp"
+                        android:textColor="@color/primary" android:textStyle="bold" />
+                    <TextView android:id="@+id/tv_deadline"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textSize="12sp" android:textColor="@color/text_secondary" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_eligibility"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="12sp" android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Passport ID Entry -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Enter your Passport ID to auto-fill"
+                    android:textStyle="bold" android:textSize="14sp"
+                    android:textColor="@color/text_primary" android:layout_marginBottom="12dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Passport ID (e.g. ODIST-KMD-P-PKS-001)"
+                        style="@style/Widget.EduLocker.TextInput"
+                        android:layout_marginEnd="8dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_passport_id_entry"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:inputType="textCapCharacters" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Button android:id="@+id/btn_verify_id"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Verify"
+                        android:background="@drawable/bg_gradient_primary"
+                        android:textColor="@color/white" android:textAllCaps="false" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar android:id="@+id/progress_bar"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center" android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Student Info (shown after ID verification) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layout_student_info"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" android:visibility="gone"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Student Details"
+                    android:textStyle="bold" android:textSize="14sp"
+                    android:textColor="@color/primary" android:layout_marginBottom="12dp" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="Name" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_student_name" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="Passport ID" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_passport_id" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="DOB" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_dob" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="Father's Name" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_father_name" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="Class" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_class" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="Category" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_category" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="120dp" android:layout_height="wrap_content"
+                        android:text="Address" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <TextView android:id="@+id/tv_address" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textColor="@color/text_primary" android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Required Documents Status -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layout_doc_status"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" android:visibility="gone"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Required Documents"
+                    android:textStyle="bold" android:textSize="14sp"
+                    android:textColor="@color/primary" android:layout_marginBottom="8dp" />
+                <TextView android:id="@+id/tv_doc_status_note"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="12sp" android:textColor="@color/text_secondary"
+                    android:visibility="gone" android:layout_marginBottom="8dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_doc_status"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button android:id="@+id/btn_submit"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:text="Submit Application"
+            android:background="@drawable/bg_gradient_primary"
+            android:textColor="@color/white" android:textAllCaps="false"
+            android:enabled="false" />
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

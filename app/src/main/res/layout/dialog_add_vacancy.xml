@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="20dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Class / Stream (e.g. Class 11 Science)"
+        style="@style/Widget.EduLocker.TextInput"
+        android:layout_marginBottom="12dp">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_class_stream"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Number of Seats"
+        style="@style/Widget.EduLocker.TextInput"
+        android:layout_marginBottom="12dp">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_seats"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>

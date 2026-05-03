@@ -1,0 +1,77 @@
+# ============================================================
+# Android / Gradle
+# ============================================================
+*.iml
+.gradle/
+/local.properties
+/build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ============================================================
+# Android Studio / IntelliJ IDEA
+# ============================================================
+/.idea/caches/
+/.idea/libraries/
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/deploymentTargetDropDown.xml
+/.idea/migrations.xml
+/.idea/uiDesigner.xml
+.idea/
+
+# ============================================================
+# Secrets & credentials — NEVER commit these
+# ============================================================
+secrets.properties
+local.properties
+app/google-services.json
+google-services.json
+*.keystore
+*.jks
+*.p12
+
+# ============================================================
+# Reference / design assets (large, not source code)
+# ============================================================
+pictures/
+form/
+app\ prototype\ introduction\ ppt/
+Prototype.edulocker.index.html\ source\ based_20260419_153012_0000/
+
+# PDFs
+*.pdf
+
+# ============================================================
+# Scripts / seed files (local tooling only)
+# ============================================================
+scripts/
+
+# ============================================================
+# Misc
+# ============================================================
+# Claude Code working notes
+next
+CLAUDE.md
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Node (if any tooling was run locally)
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log

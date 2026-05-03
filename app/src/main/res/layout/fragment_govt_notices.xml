@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Title + filter chips -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Notices &amp; Scholarships"
+                android:textStyle="bold" android:textSize="18sp"
+                android:textColor="@color/primary"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_scholarships"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Scholarships"
+                    android:checked="true"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_notices"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Notices"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </LinearLayout>
+
+        <ProgressBar android:id="@+id/progress_bar"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center" android:visibility="gone" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <!-- Scholarships section -->
+                    <LinearLayout
+                        android:id="@+id/section_scholarships"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView android:id="@+id/tv_scholarships_label"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="Scholarships"
+                            android:textStyle="bold" android:textSize="14sp"
+                            android:textColor="@color/primary"
+                            android:layout_marginBottom="8dp"
+                            android:visibility="gone" />
+
+                        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_scholarships"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:layout_marginBottom="8dp" />
+
+                    </LinearLayout>
+
+                    <!-- Notices section -->
+                    <LinearLayout
+                        android:id="@+id/section_notices"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView android:id="@+id/tv_empty"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="No notices yet. Tap + to post."
+                            android:textColor="@color/text_secondary" android:textSize="13sp"
+                            android:gravity="center" android:padding="24dp" android:visibility="gone" />
+
+                        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_notices"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_post_notice"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp" android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="@color/primary" android:tint="@color/white"
+        android:contentDescription="Post Notice" />
+
+</FrameLayout>

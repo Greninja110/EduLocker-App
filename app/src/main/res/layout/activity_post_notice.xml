@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background" android:orientation="vertical">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_dark"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp">
+        <ImageView android:id="@+id/btn_back"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:src="@drawable/ic_back" android:tint="@color/white"
+            android:padding="4dp" android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+        <TextView android:id="@+id/tv_toolbar_title"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Post"
+            android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp" app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+
+                <!-- Post type: Notice/Announcement or Scholarship -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_post_type"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Post Type"
+                    style="@style/Widget.EduLocker.TextInput.Dropdown"
+                    android:layout_marginBottom="16dp">
+                    <AutoCompleteTextView android:id="@+id/spinner_post_type"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:focusable="false" android:cursorVisible="false" android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Audience (school admin only) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_audience"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Send To"
+                    style="@style/Widget.EduLocker.TextInput.Dropdown"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone">
+                    <AutoCompleteTextView android:id="@+id/spinner_audience"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:focusable="false" android:cursorVisible="false" android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Class selector — teacher only -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_class"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Target Class"
+                    style="@style/Widget.EduLocker.TextInput.Dropdown"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone">
+                    <AutoCompleteTextView android:id="@+id/spinner_class"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:inputType="none" android:focusable="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- State selector — government only -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_state"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Target State"
+                    style="@style/Widget.EduLocker.TextInput.Dropdown"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone">
+                    <AutoCompleteTextView android:id="@+id/spinner_state"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:focusable="false" android:cursorVisible="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Title (used for both Notice and Scholarship) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Title"
+                    style="@style/Widget.EduLocker.TextInput"
+                    android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_notice_title"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:inputType="textCapSentences" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Content (Notice only) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_notice_content"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Content"
+                    style="@style/Widget.EduLocker.TextInput">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_notice_content"
+                        android:layout_width="match_parent" android:layout_height="120dp"
+                        android:gravity="top" android:inputType="textMultiLine" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- ======= SCHOLARSHIP-ONLY FIELDS ======= -->
+                <TextView android:id="@+id/tv_scholarship_desc_label"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Scholarship Description (optional)"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:layout_marginTop="16dp" android:layout_marginBottom="4dp"
+                    android:visibility="gone" />
+
+                <LinearLayout android:id="@+id/layout_scholarship_fields"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:hint="Description (optional)"
+                        style="@style/Widget.EduLocker.TextInput"
+                        android:layout_marginBottom="16dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_scholarship_desc"
+                            android:layout_width="match_parent" android:layout_height="80dp"
+                            android:gravity="top" android:inputType="textMultiLine" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:weightSum="2">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:hint="Amount (e.g. ₹10,000)"
+                            style="@style/Widget.EduLocker.TextInput"
+                            android:layout_marginEnd="8dp" android:layout_marginBottom="16dp">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_amount"
+                                android:layout_width="match_parent" android:layout_height="wrap_content" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:hint="Min Marks %"
+                            style="@style/Widget.EduLocker.TextInput"
+                            android:layout_marginBottom="16dp">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_min_marks"
+                                android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <!-- Deadline — tapping opens date picker -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:hint="Last Date (DD/MM/YYYY)"
+                        style="@style/Widget.EduLocker.TextInput"
+                        android:layout_marginBottom="16dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_deadline"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:focusable="false" android:cursorVisible="false"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:weightSum="2">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:hint="Eligible Category"
+                            style="@style/Widget.EduLocker.TextInput.Dropdown"
+                            android:layout_marginEnd="8dp" android:layout_marginBottom="16dp">
+                            <AutoCompleteTextView android:id="@+id/spinner_category"
+                                android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:focusable="false" android:cursorVisible="false" android:inputType="none" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:hint="Eligible Class"
+                            style="@style/Widget.EduLocker.TextInput.Dropdown"
+                            android:layout_marginBottom="16dp">
+                            <AutoCompleteTextView android:id="@+id/spinner_eligible_class"
+                                android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:focusable="false" android:cursorVisible="false" android:inputType="none" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <!-- Required Documents section -->
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Required Documents"
+                        android:textStyle="bold" android:textColor="@color/text_primary"
+                        android:textSize="14sp" android:layout_marginBottom="8dp" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group_docs"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp" />
+
+                    <Button android:id="@+id/btn_add_required_doc"
+                        android:layout_width="wrap_content" android:layout_height="36dp"
+                        android:text="+ Add Required Document"
+                        style="@style/Widget.EduLocker.Button.Outlined"
+                        android:textAllCaps="false" android:textSize="12sp"
+                        android:layout_marginBottom="8dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar android:id="@+id/progress_bar" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="center"
+            android:visibility="gone" android:layout_marginBottom="8dp" />
+
+        <Button android:id="@+id/btn_post"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:text="Post Notice"
+            android:background="@drawable/bg_gradient_primary"
+            android:textColor="@color/white" android:textAllCaps="false" />
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

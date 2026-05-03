@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Header card — dark maroon with margin, matches profile style -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_card_dark">
+
+        <TextView android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Welcome back" android:textSize="14sp"
+            android:textColor="#AAFFFFFF" />
+
+        <TextView android:id="@+id/tv_student_name"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Student Name" android:textSize="20sp"
+            android:textColor="@color/white" android:textStyle="bold" />
+
+        <!-- Source filter chips -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip android:id="@+id/chip_all"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="All" android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_primary"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_govt"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Education" android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_primary"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_odisha_x"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Government" android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_primary"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_bise"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Top Stories" android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_primary"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_govt_india"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Science"
+                    android:textColor="@color/text_primary"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false" />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

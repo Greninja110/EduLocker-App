@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_DOCUMENTS" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EduLocker"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:targetApi="31">
+
+        <!-- FileProvider for sharing ID card images -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
+        <!-- Splash -->
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.EduLocker.Splash"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Auth flow -->
+        <activity android:name=".activities.LandingActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.SeedDataActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.LoginActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.RegisterStep1Activity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.RegisterStep2Activity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.ProfileCreationLoadingActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.ConfirmationActivity" android:screenOrientation="portrait" />
+
+        <!-- Student main -->
+        <activity android:name=".activities.MainActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.VirtualIdCardActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.KycVerificationActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.ScholarshipApplicationActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.SettingsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.AccountSwitcherActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.AccountDetailsActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.PlaceholderSettingsActivity" android:screenOrientation="portrait" />
+
+        <!-- Government -->
+        <activity android:name=".activities.govt.GovtDashboardActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.govt.RegisterSchoolActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.govt.SchoolDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.govt.GovDocTypesActivity" android:screenOrientation="portrait" />
+
+        <!-- Application review (gov + school admin) -->
+        <activity android:name=".activities.ApplicationReviewActivity" android:screenOrientation="portrait" />
+
+        <!-- Org info (student read-only view) -->
+        <activity android:name=".activities.OrgInfoActivity" android:screenOrientation="portrait" />
+
+        <!-- School admin -->
+        <activity android:name=".activities.school.SchoolDashboardActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.school.AddStudentActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.school.AddTeacherActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.school.UploadDocumentActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.school.PostNoticeActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.school.ManageOrgActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.school.StudentDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.school.TeacherDetailActivity" android:screenOrientation="portrait" />
+
+        <!-- Teacher -->
+        <activity android:name=".activities.teacher.TeacherDashboardActivity" android:screenOrientation="portrait" />
+
+        <!-- Parent -->
+        <activity android:name=".activities.parent.ParentDashboardActivity" android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">EduLocker</string>
+    <string name="tagline">India\'s Most Trusted Digital Academic Ecosystem</string>
+    <string name="issued_by">Issued by Govt.</string>
+    <string name="welcome_to">welcome to edulocker</string>
+    <string name="login_existing">login with an existing account</string>
+    <string name="register_new">Register as a new user</string>
+    <string name="rescue_account">rescue my account</string>
+    <string name="introduce_yourself">Introduce Yourself</string>
+    <string name="register_with_edulocker">Register yourself\nwith edulocker</string>
+    <string name="wait_profile">wait while creating\nyour profile</string>
+    <string name="account_created">your account was\ncreated. tap continue</string>
+    <string name="welcome_back_edulocker">welcome back\nto edulocker</string>
+    <string name="unique_id_hint">Enter the id provided by edulocker</string>
+    <string name="otp_hint">One time password by UIDAI</string>
+    <string name="login">login</string>
+    <string name="register">register</string>
+    <string name="continue_btn">Continue</string>
+    <string name="dont_have_account">don\'t have account ??</string>
+    <string name="sign_in_existing">sign in with existing account</string>
+    <string name="restart_app">restart the app</string>
+    <string name="verified_student">Verified Student</string>
+    <string name="passport_id_label">Passport ID</string>
+    <string name="kyc_verified">KYC Status: Verified</string>
+</resources>

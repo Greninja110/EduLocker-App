@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background" android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_dark"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp">
+        <ImageView android:id="@+id/btn_back"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:src="@drawable/ic_back" android:tint="@color/white"
+            android:padding="4dp" android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+        <TextView android:id="@+id/tv_toolbar_title"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Faculty Details"
+            android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Avatar + name card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp" app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/surface">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:gravity="center" android:padding="24dp">
+                    <FrameLayout android:layout_width="72dp" android:layout_height="72dp"
+                        android:background="@drawable/bg_gradient_primary"
+                        android:backgroundTint="#7B1FA2" android:layout_marginBottom="12dp">
+                        <TextView android:id="@+id/tv_avatar_initials"
+                            android:layout_width="match_parent" android:layout_height="match_parent"
+                            android:gravity="center" android:textColor="@color/white"
+                            android:textStyle="bold" android:textSize="28sp" />
+                    </FrameLayout>
+                    <TextView android:id="@+id/tv_name"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textSize="20sp" android:textStyle="bold"
+                        android:textColor="@color/text_primary" android:gravity="center" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Faculty" android:textSize="12sp"
+                        android:textColor="#7B1FA2" android:textStyle="bold"
+                        android:paddingHorizontal="12dp" android:paddingVertical="4dp"
+                        android:layout_marginTop="8dp" android:background="@drawable/bg_chip" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Contact info card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp" app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/surface">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Contact Info" android:textStyle="bold"
+                        android:textSize="15sp" android:textColor="@color/primary"
+                        android:layout_marginBottom="12dp" />
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginBottom="10dp">
+                        <TextView android:layout_width="110dp" android:layout_height="wrap_content"
+                            android:text="Phone" android:textSize="13sp" android:textColor="@color/text_secondary" />
+                        <TextView android:id="@+id/tv_phone"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:textSize="13sp"
+                            android:textStyle="bold" android:textColor="@color/text_primary" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginBottom="10dp">
+                        <TextView android:layout_width="110dp" android:layout_height="wrap_content"
+                            android:text="Login Email" android:textSize="13sp" android:textColor="@color/text_secondary" />
+                        <TextView android:id="@+id/tv_email"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:textSize="13sp"
+                            android:textStyle="bold" android:textColor="@color/text_primary" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView android:layout_width="110dp" android:layout_height="wrap_content"
+                            android:text="Org ID" android:textSize="13sp" android:textColor="@color/text_secondary" />
+                        <TextView android:id="@+id/tv_school_id"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:textSize="13sp"
+                            android:textStyle="bold" android:textColor="@color/text_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Assigned Classes card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp" app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/surface">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Assigned Classes" android:textStyle="bold"
+                            android:textSize="15sp" android:textColor="@color/primary" />
+                        <TextView android:id="@+id/btn_add_class"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="+ Add Class"
+                            android:textSize="12sp" android:textStyle="bold"
+                            android:background="@drawable/bg_btn_outlined"
+                            android:textColor="@color/primary"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="6dp" />
+                    </LinearLayout>
+
+                    <!-- Class assignments injected here dynamically -->
+                    <LinearLayout android:id="@+id/layout_classes"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

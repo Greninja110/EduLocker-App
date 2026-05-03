@@ -1,0 +1,56 @@
+<resources>
+    <style name="Theme.EduLocker" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/text_on_primary</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="Theme.EduLocker.Splash" parent="Theme.EduLocker">
+        <item name="android:statusBarColor">@color/background</item>
+    </style>
+
+    <style name="Widget.EduLocker.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="cornerRadius">24dp</item>
+    </style>
+
+    <style name="Widget.EduLocker.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="cornerRadius">24dp</item>
+    </style>
+
+    <!-- TextInput — label always on border, rounded corners -->
+    <style name="Widget.EduLocker.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="hintAnimationEnabled">false</item>
+        <item name="expandedHintEnabled">false</item>
+    </style>
+
+    <!-- Theme overlay for search input on dark card — forces all stroke/hint colours white -->
+    <style name="ThemeOverlay.EduLocker.WhiteInput" parent="">
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:textColorHint">#AAFFFFFF</item>
+    </style>
+
+    <style name="Widget.EduLocker.TextInput.Dropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="hintAnimationEnabled">false</item>
+        <item name="expandedHintEnabled">false</item>
+    </style>
+</resources>

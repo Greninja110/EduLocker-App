@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="your account was\ncreated. tap continue"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="40dp" />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="continue"
+        android:background="@drawable/bg_gradient_primary"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tv_restart_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="restart the app"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:paddingVertical="8dp" />
+
+</LinearLayout>

@@ -1,0 +1,153 @@
+rules_version = '2';
+
+// EduLocker Firestore Security Rules
+// Deploy: firebase deploy --only firestore:rules
+// Named database: "edulocker"
+
+service cloud.firestore {
+  match /databases/edulocker/documents {
+
+    // ─── Helper functions ─────────────────────────────────────────────────────
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // userRole() does a get() on /users — this is safe here because the /users
+    // rule below allows ALL authenticated reads (no circular role check there).
+    function userRole() {
+      return get(/databases/edulocker/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isGov()     { return userRole() == 'government'; }
+    function isSchool()  { return userRole() == 'school'; }
+    function isTeacher() { return userRole() == 'teacher'; }
+    function isParent()  { return userRole() == 'parent'; }
+    function isStudent() { return userRole() == 'student'; }
+
+    // ─── /users ───────────────────────────────────────────────────────────────
+    // Readable by ANY authenticated user — this avoids circular rule evaluation
+    // (userRole() calls get() on this collection; if reading /users itself needed
+    // another userRole() check it would recurse infinitely and always deny).
+
+    match /users/{uid} {
+      allow read:   if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated()
+                    && (request.auth.uid == uid || isGov() || isSchool());
+      allow delete: if isAuthenticated() && isGov();
+    }
+
+    // ─── /schools ─────────────────────────────────────────────────────────────
+
+    match /schools/{schoolId} {
+      allow read:   if isAuthenticated();
+      allow create: if isAuthenticated() && isGov();
+      allow update: if isAuthenticated() && (isGov() || isSchool());
+      allow delete: if isAuthenticated() && isGov();
+
+      match /vacancies/{vacancyId} {
+        allow read:  if isAuthenticated();
+        allow write: if isAuthenticated() && isSchool();
+      }
+    }
+
+    // ─── /students ────────────────────────────────────────────────────────────
+
+    match /students/{passportId} {
+      allow read: if isAuthenticated() && (
+        isGov() || isSchool() || isTeacher()
+        || request.auth.uid == resource.data.userId
+        || request.auth.uid == resource.data.parentUserId
+      );
+      allow create: if isAuthenticated() && (isGov() || isSchool());
+      allow update: if isAuthenticated() && (isGov() || isSchool());
+      allow delete: if isAuthenticated() && isGov();
+    }
+
+    // ─── /documents ───────────────────────────────────────────────────────────
+
+    match /documents/{docId} {
+      allow read: if isAuthenticated() && (
+        resource.data.visibility == 'shared'
+        || request.auth.uid == resource.data.uploadedByUserId
+        || isGov()
+        || isSchool()
+        || isTeacher()
+        || (isStudent() && request.auth.uid ==
+              get(/databases/edulocker/documents/students/$(resource.data.passportId)).data.userId)
+        || (isParent() && request.auth.uid ==
+              get(/databases/edulocker/documents/students/$(resource.data.passportId)).data.parentUserId)
+      );
+      allow create: if isAuthenticated() && (isParent() || isSchool() || isTeacher() || isGov());
+      allow delete: if isAuthenticated() && request.auth.uid == resource.data.uploadedByUserId;
+      allow update: if isAuthenticated()
+                    && (request.auth.uid == resource.data.uploadedByUserId || isGov());
+    }
+
+    // ─── /notices ─────────────────────────────────────────────────────────────
+
+    match /notices/{noticeId} {
+      allow read:          if isAuthenticated();
+      allow create:        if isAuthenticated() && (isGov() || isSchool() || isTeacher());
+      allow update, delete: if isAuthenticated()
+                            && request.auth.uid == resource.data.postedByUserId;
+    }
+
+    // ─── /scholarships ────────────────────────────────────────────────────────
+
+    match /scholarships/{scholarshipId} {
+      allow read:          if isAuthenticated();
+      allow create:        if isAuthenticated() && (isGov() || isSchool());
+      allow update, delete: if isAuthenticated()
+                            && request.auth.uid == resource.data.postedByUserId;
+    }
+
+    // ─── /applications ────────────────────────────────────────────────────────
+
+    match /applications/{applicationId} {
+      allow read: if isAuthenticated() && (
+        isGov()
+        || isSchool()
+        || request.auth.uid == resource.data.uploadedByUserId
+      );
+      allow create: if isAuthenticated() && isStudent();
+      allow update: if isAuthenticated() && (isGov() || isSchool());
+    }
+
+    // ─── /documentTypes ───────────────────────────────────────────────────────
+
+    match /documentTypes/{docTypeId} {
+      allow read:  if isAuthenticated();
+      allow write: if isAuthenticated() && isGov();
+    }
+
+    // ─── /teachers ────────────────────────────────────────────────────────────
+
+    match /teachers/{teacherId} {
+      allow read:  if isAuthenticated() && (isGov() || isSchool() || isTeacher());
+      allow write: if isAuthenticated() && (isGov() || isSchool());
+    }
+
+    // ─── /news ────────────────────────────────────────────────────────────────
+
+    match /news/{newsId} {
+      allow read:  if isAuthenticated();
+      allow write: if isAuthenticated() && isGov();
+    }
+  }
+}
+
+
+// ─── SIMPLE FALLBACK ─────────────────────────────────────────────────────────
+// If anything above causes unexpected denials during the competition demo,
+// go to Firebase Console → Firestore → Rules and paste these instead:
+//
+// rules_version = '2';
+// service cloud.firestore {
+//   match /databases/edulocker/documents {
+//     match /{document=**} {
+//       allow read, write: if request.auth != null;
+//     }
+//   }
+// }
