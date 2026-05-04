@@ -210,9 +210,9 @@ SplashActivity
 
 ---
 
-## Auto-Generated Credentials
+## Credentials
 
-No user ever chooses a password. All credentials are generated and delivered via SMS:
+All login credentials are created and issued by the super admin — no user sets their own password. After account creation, credentials are shown in a dialog with a Copy button and sent via SMS.
 
 | Credential | Format Example |
 |---|---|
@@ -220,8 +220,6 @@ No user ever chooses a password. All credentials are generated and delivered via
 | Teacher email | `pks.priya@edulocker.in` |
 | Student email | `ODIST-KMD-P-PKS-001@edulocker.in` |
 | Password | `Priy@6658` (name + last 4 digits of phone) |
-
-After account creation, credentials are shown in a dialog with a Copy button and sent via SMS.
 
 ---
 
