@@ -21,18 +21,34 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.25" />
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/ll_credits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="~ Abhijeet"
-        android:textSize="16sp"
-        android:textColor="@color/primary"
-        android:textStyle="bold"
-        android:letterSpacing="0.05"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.75">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Created by"
+            android:textSize="11sp"
+            android:textColor="@color/primary"
+            android:letterSpacing="0.05" />
+
+<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abhijeet Sahoo"
+            android:textSize="13sp"
+            android:textColor="@color/primary"
+            android:letterSpacing="0.05" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
